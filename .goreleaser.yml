@@ -6,9 +6,6 @@ builds:
   -
     id: ntfybot_linux_amd64
     binary: ntfybot
-    tags: [osusergo,netgo]
-    ldflags:
-      - "-linkmode=external -extldflags=-static -s -w"
     goos: [linux]
     goarch: [amd64]
 nfpms:
