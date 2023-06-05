@@ -34,7 +34,7 @@ type userCommand struct {
 func main() {
 	configFile := os.Getenv("NTFYBOT_CONFIG")
 	if configFile == "" {
-		configFile = "/etc/ntfy/bot.yml"
+		configFile = "/etc/ntfybot/ntfybot.yml"
 	}
 	f, err := os.ReadFile(configFile)
 	if err != nil {

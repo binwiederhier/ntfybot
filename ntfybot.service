@@ -1,0 +1,12 @@
+[Unit]
+Description=ntfybot
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/ntfybot
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

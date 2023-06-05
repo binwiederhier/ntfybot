@@ -1,0 +1,50 @@
+before:
+  hooks:
+    - go mod download
+    - go mod tidy
+builds:
+  -
+    id: ntfybot_linux_amd64
+    binary: ntfybot
+    tags: [osusergo,netgo]
+    ldflags:
+      - "-linkmode=external -extldflags=-static -s -w"
+    goos: [linux]
+    goarch: [amd64]
+nfpms:
+  -
+    package_name: ntfybot
+    homepage: https://github.com/binwiederhier/ntfybot
+    maintainer: Philipp C. Heckel <philipp.heckel@gmail.com>
+    description: ntfybot is tiny Discord bot to help with random ntfy things
+    license: Apache 2.0
+    formats:
+      - deb
+    bindir: /usr/bin
+    contents:
+      - src: ntfybot.yml
+        dst: /etc/ntfybot/ntfybot.yml
+        type: "config|noreplace"
+      - src: ntfybot.service
+        dst: /lib/systemd/system/ntfybot.service
+archives:
+  -
+    id: ntfybot_linux
+    builds:
+      - ntfy_linux_amd64
+    wrap_in_directory: true
+    files:
+      - LICENSE
+      - README.md
+      - ntfybot.yml
+      - ntfybot.service
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ .Tag }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'

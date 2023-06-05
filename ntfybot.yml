@@ -1,0 +1,11 @@
+# Discord bot token
+token:
+
+# User-specific commands, e.g.
+#
+# user_commands:
+#  - command: "!trouble"
+#    description: "Show link to troubleshooting docs"
+#    response: "https://docs.ntfy.sh/troubleshooting/"
+#
+user_commands:
