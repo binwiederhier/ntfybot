@@ -17,12 +17,15 @@ help:
 clean: .PHONY
 	rm -rf dist build
 
-build: .PHONY
+build-deps: .PHONY
+	go install github.com/goreleaser/goreleaser@latest
+
+build: build-deps
 	goreleaser build --snapshot --clean
 
-release: clean
+release: clean build-deps
 	goreleaser release --clean
 
-release-snapshot: clean
+release-snapshot: clean build-deps
 	goreleaser release --snapshot --skip-publish --clean
 
