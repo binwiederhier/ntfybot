@@ -5,7 +5,7 @@ After=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/ntfybot
+ExecStart=/usr/bin/ntfybot
 Restart=always
 
 [Install]
